@@ -15,7 +15,7 @@ const migrateAnimTrack = (track: { frameRate: number, smoothness: number, keyfra
     }
 };
 
-const migrateSettings = (settings: { animTracks?: any[] }) => {
+const migrateSettings = (settings: { animTracks?: any[], skybox?: any }) => {
     settings.animTracks?.forEach((track) => {
         migrateAnimTrack(track);
     });
