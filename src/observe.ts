@@ -13,8 +13,8 @@ const observe = (events: EventHandler, target: any) => {
             }
 
             // not allowed to set a new value on target
-            if (!members.has(property)) {
-                console.error('Cannot set new property on target');
+            if (!members.has(property as string)) {
+                console.error('Cannot set new property on target:', property);
                 return false;
             }
 
@@ -22,7 +22,7 @@ const observe = (events: EventHandler, target: any) => {
             if (target[property] !== value) {
                 const prev = target[property];
                 target[property] = value;
-                events.fire(`${property}:changed`, value, prev);
+                events.fire(`${property as string}:changed`, value, prev);
             }
 
             return true;
